@@ -21,12 +21,9 @@ const statusID = {
     3: "Finished"
 }
 
-export default function SimpleTable({ data, handleOpen, handleReset }) {
+export default function SimpleTable({ data, handleOpen, handleReset, handleAttack, handleEdit }) {
   const classes = useStyles();
 
-  const handleEdit = (values) => {
-    console.log("Edit ", values);
-  };
   return (
     <>
       {Array.isArray(data) && data.length > 0 ? (
@@ -47,10 +44,13 @@ export default function SimpleTable({ data, handleOpen, handleReset }) {
                   <TableCell align="right">{row.name}</TableCell>
                   <TableCell align="right">{statusID[row.statusID]}</TableCell>
                   <TableCell align="right">
+                    <Button aria-label="log" onClick={() => handleAttack(row.id)} disabled={row.statusID == 3 ? true : false}>
+                      Battle
+                    </Button>
                     <Button aria-label="log" onClick={() => handleOpen(row.id)} disabled={row.statusID == 1 ? true : false}>
                       Log
                     </Button>
-                    <Button aria-label="edit" onClick={() => handleEdit(row.id)}>
+                    <Button aria-label="edit" onClick={() => handleEdit(row.id)} disabled={row.statusID == 1 ? false : true}>
                       Edit
                     </Button>
                     <Button aria-label="reset" onClick={() => handleReset(row.id)} disabled={row.statusID == 1 ? true : false}>

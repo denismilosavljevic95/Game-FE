@@ -69,6 +69,42 @@ const reducer = (state = initialState, action) =>
                 error: true,
                 errorMessage: action.data
             });
+        case actionTypes.NEW_BATTLE:
+            return Object.assign({}, state, {
+                isLoading: true,
+                error: false,
+                errorMessage: null
+            });
+        case actionTypes.NEW_BATTLE_SUCCESS:
+            return Object.assign({}, state, {
+                isLoading: false,
+                error: false,
+                errorMessage: null
+            });
+        case actionTypes.NEW_BATTLE_FAIL:
+            return Object.assign({}, state, {
+                isLoading: false,
+                error: true,
+                errorMessage: action.data
+            });
+        case actionTypes.NEW_ATTACK:
+            return Object.assign({}, state, {
+                isLoading: true,
+                error: false,
+                errorMessage: null
+            });
+        case actionTypes.NEW_ATTACK_SUCCESS:
+            return Object.assign({}, state, {
+                isLoading: false,
+                error: false,
+                errorMessage: null
+            });
+        case actionTypes.NEW_ATTACK_FAIL:
+            return Object.assign({}, state, {
+                isLoading: false,
+                error: true,
+                errorMessage: action.data
+            });
         default:
             return state;
     }

@@ -41,10 +41,11 @@ export const fetchLogsFail = error => {
   }
 }
 
-export const resetBattle = id => {
+export const resetBattle = (id, url) => {
   return {
     type: actionTypes.RESET_BATTLE,
-    id
+    id,
+    url
   }
 }
   
@@ -58,6 +59,50 @@ export const resetBattleSuccess = data => {
 export const resetBattleFail = error => {
   return {
     type: actionTypes.RESET_BATTLE_FAIL,
+    error
+  }
+}
+
+export const newBattle = (name, url) => {
+  return {
+    type: actionTypes.NEW_BATTLE,
+    name,
+    url
+  }
+}
+  
+export const newBattleSuccess = data => {
+  return {
+    type: actionTypes.NEW_BATTLE_SUCCESS,
+    data
+  }
+}
+  
+export const newBattleFail = error => {
+  return {
+    type: actionTypes.NEW_BATTLE_FAIL,
+    error
+  }
+}
+
+export const newAttack = (id, url) => {
+  return {
+    type: actionTypes.NEW_ATTACK,
+    id,
+    url
+  }
+}
+  
+export const newAttackSuccess = data => {
+  return {
+    type: actionTypes.NEW_ATTACK_SUCCESS,
+    data
+  }
+}
+  
+export const newAttackFail = error => {
+  return {
+    type: actionTypes.NEW_ATTACK_FAIL,
     error
   }
 }

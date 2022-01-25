@@ -1,5 +1,4 @@
 import Games from './pages/games';
-import CreateGame from './pages/create-game';
 import Header from './components/header';
 import {
   Routes,
@@ -13,7 +12,6 @@ function App() {
       <Header/>
         <Routes>
           <Route exact path='/' element={<Games/>} />
-          <Route exact path='/create-game' element={<CreateGame/>} />
         </Routes>
     </div>
   );
