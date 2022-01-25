@@ -58,8 +58,8 @@ function ModalCustom({ open, handleClose, logs }) {
                     <TableRow key={item.id}>
                       <TableCell>{index + 1}</TableCell>
                       <TableCell align="right">{item.damage}</TableCell>
-                      <TableCell align="right">{item.attactID}</TableCell>
-                      <TableCell align="right">{item.defenseID}</TableCell>
+                      <TableCell align="right">{item.Attack.name}</TableCell>
+                      <TableCell align="right">{item.Defense.name}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
