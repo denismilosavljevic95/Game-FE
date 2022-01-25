@@ -16,12 +16,19 @@ const useStyles = makeStyles({
 });
 
 const statusID = {
-    1: "Ready",
-    2: "In Progress",
-    3: "Finished"
-}
+  1: "Ready",
+  2: "In Progress",
+  3: "Finished",
+};
 
-export default function SimpleTable({ data, handleOpen, handleReset, handleAttack, handleEdit }) {
+export default function SimpleTable({
+  data,
+  handleOpen,
+  handleReset,
+  handleAttack,
+  handleEdit,
+  handleAddArmy,
+}) {
   const classes = useStyles();
 
   return (
@@ -44,16 +51,39 @@ export default function SimpleTable({ data, handleOpen, handleReset, handleAttac
                   <TableCell align="right">{row.name}</TableCell>
                   <TableCell align="right">{statusID[row.statusID]}</TableCell>
                   <TableCell align="right">
-                    <Button aria-label="log" onClick={() => handleAttack(row.id)} disabled={row.statusID == 3 ? true : false}>
+                    <Button
+                      aria-label="army"
+                      onClick={() => handleAddArmy(row.id)}
+                      disabled={row.statusID == 1 ? false : true}
+                    >
+                      Add Army
+                    </Button>
+                    <Button
+                      aria-label="log"
+                      onClick={() => handleAttack(row.id)}
+                      disabled={row.statusID == 3 ? true : false}
+                    >
                       Battle
                     </Button>
-                    <Button aria-label="log" onClick={() => handleOpen(row.id)} disabled={row.statusID == 1 ? true : false}>
+                    <Button
+                      aria-label="log"
+                      onClick={() => handleOpen(row.id)}
+                      disabled={row.statusID == 1 ? true : false}
+                    >
                       Log
                     </Button>
-                    <Button aria-label="edit" onClick={() => handleEdit(row.id)} disabled={row.statusID == 1 ? false : true}>
+                    <Button
+                      aria-label="edit"
+                      onClick={() => handleEdit(row.id)}
+                      disabled={row.statusID == 1 ? false : true}
+                    >
                       Edit
                     </Button>
-                    <Button aria-label="reset" onClick={() => handleReset(row.id)} disabled={row.statusID == 1 ? true : false}>
+                    <Button
+                      aria-label="reset"
+                      onClick={() => handleReset(row.id)}
+                      disabled={row.statusID == 1 ? true : false}
+                    >
                       Reset
                     </Button>
                   </TableCell>

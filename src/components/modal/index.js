@@ -24,13 +24,13 @@ const style = {
 };
 
 const useStyles = makeStyles({
-table: {
+  table: {
     minWidth: 650,
-},
+  },
 });
 
 function ModalCustom({ open, handleClose, logs }) {
-    const classes = useStyles();
+  const classes = useStyles();
 
   return (
     <>
@@ -41,7 +41,7 @@ function ModalCustom({ open, handleClose, logs }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-            <p style={{textAlign: 'center'}}>Battle Log</p>
+          <p style={{ textAlign: "center" }}>Battle Log</p>
           {Array.isArray(logs) && logs.length > 0 ? (
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="simple table">
