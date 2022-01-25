@@ -61,7 +61,7 @@ export default function SimpleTable({
                     <Button
                       aria-label="log"
                       onClick={() => handleAttack(row.id)}
-                      disabled={row.statusID == 3 ? true : false}
+                      disabled={(row.statusID != 3 && row.Armies.length >= 3) ? false : true}
                     >
                       Battle
                     </Button>
