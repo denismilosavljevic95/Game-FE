@@ -95,3 +95,16 @@ export function* addArmySaga(action) {
     yield put(actions.addArmyFail(error));
   }
 }
+
+export function* battleInfoSaga(action) {
+  try {
+    let response;
+    response = yield axios.get(
+      "http://localhost:4001/battle/info?id=" + action.id
+    );
+    yield put(actions.battleInfoSuccess(response.data));
+  } catch (error) {
+    console.log("error", error);
+    yield put(actions.battleInfoFail(error));
+  }
+}

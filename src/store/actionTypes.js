@@ -21,3 +21,7 @@ export const NEW_ATTACK_FAIL = "NEW_ATTACK_FAIL";
 export const ADD_ARMY = "ADD_ARMY";
 export const ADD_ARMY_SUCCESS = "ADD_ARMY_SUCCESS";
 export const ADD_ARMY_FAIL = "ADD_ARMY_FAIL";
+
+export const BATTLE_INFO = "BATTLE_INFO";
+export const BATTLE_INFO_SUCCESS = "BATTLE_INFO_SUCCESS";
+export const BATTLE_INFO_FAIL = "BATTLE_INFO_FAIL";

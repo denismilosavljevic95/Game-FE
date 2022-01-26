@@ -7,6 +7,7 @@ import {
   newBattle,
   newAttack,
   addArmy,
+  battleInfo
 } from "../../store/actions";
 import SimpleTable from "../../components/table";
 import ModalCustom from "../../components/modal";
@@ -14,6 +15,7 @@ import Confirm from "../../components/confirm";
 import Button from "@mui/material/Button";
 import NewBattle from "../../components/newBattle";
 import AddArmy from "../../components/AddArmy";
+import Info from "../../components/Info";
 
 class Games extends Component {
   state = {
@@ -47,10 +49,6 @@ class Games extends Component {
     this.handleConfirmClose();
   };
 
-  handleEdit = (_) => console.log("Edit");
-
-  handleBattle = (_) => console.log("Battle");
-
   handleNewBatlleClose = (_) => this.setState({ openCreate: false });
 
   handleNewBatlleOpen = (_) => this.setState({ openCreate: true });
@@ -60,22 +58,29 @@ class Games extends Component {
     this.handleNewBatlleClose();
   };
 
-  handleNewAttack = (battleID) =>
-    this.props.dispatch(newAttack(battleID, "http://localhost:4001/battles"));
+  handleNewAttack = (BattleID) =>
+    this.props.dispatch(newAttack(BattleID, "http://localhost:4001/battles"));
 
   handleAddArmy = (data) => {
     this.props.dispatch(
       addArmy(
-        { ...data, battleID: this.state.battleID },
+        { ...data, BattleID: this.state.BattleID },
         "http://localhost:4001/battles"
       )
     );
     this.handleAddArmyClose();
   };
 
-  handleAddArmyOpen = (battleID) => this.setState({ addArmy: true, battleID });
+  handleAddArmyOpen = (BattleID) => this.setState({ addArmy: true, BattleID });
 
-  handleAddArmyClose = (_) => this.setState({ addArmy: false, battleID: null });
+  handleAddArmyClose = (_) => this.setState({ addArmy: false, BattleID: null });
+
+  handleInfoOpen = (BattleID) => {
+    this.props.dispatch(battleInfo(BattleID));
+    this.setState({ info: true, BattleID });
+  };
+
+  handleInfoClose = (_) => this.setState({ info: false, BattleID: null });
 
   render() {
     console.log("props", this.props);
@@ -101,13 +106,12 @@ class Games extends Component {
           handleOpen={this.handleOpen}
           handleReset={this.handleConfirmOpen}
           handleAttack={this.handleNewAttack}
-          handleEdit={this.handleEdit}
+          handleInfo={this.handleInfoOpen}
         ></SimpleTable>
 
         <ModalCustom
           open={this.state.open}
           handleClose={this.handleClose}
-          BattleID={this.state.BattleID}
         />
         <Confirm
           open={this.state.openConfirm}
@@ -123,6 +127,10 @@ class Games extends Component {
           open={this.state.addArmy}
           handleClose={this.handleAddArmyClose}
           handleConfirm={this.handleAddArmy}
+        />
+        <Info
+          open={this.state.info}
+          handleClose={this.handleInfoClose}
         />
       </div>
     );

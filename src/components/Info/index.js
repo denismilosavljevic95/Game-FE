@@ -29,9 +29,14 @@ const useStyles = makeStyles({
   },
 });
 
-function ModalCustom({ open, handleClose, logs }) {
-  const classes = useStyles();
+const strategy = {
+    1: "Random",
+    2: "Weakest",
+    3: "Strongest"
+}
 
+function Info({ open, handleClose, info }) {
+  const classes = useStyles();
   return (
     <>
       <Modal
@@ -42,24 +47,27 @@ function ModalCustom({ open, handleClose, logs }) {
       >
         <Box sx={style}>
           <h3 style={{ textAlign: "center" }}>Battle Info</h3>
-          {Array.isArray(logs) && logs.length > 0 ? (
+          <p style={{ textAlign: "center" }}>{info?.name}</p>
+          {info && Array.isArray(info.Armies) && info.Armies.length > 0 ? (
             <TableContainer component={Paper}>
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Log #</TableCell>
-                    <TableCell align="right">Damage</TableCell>
-                    <TableCell align="right">Attacker</TableCell>
-                    <TableCell align="right">Defender</TableCell>
+                    <TableCell>Army #</TableCell>
+                    <TableCell align="right">Name</TableCell>
+                    <TableCell align="right">Units</TableCell>
+                    <TableCell align="right">Alive Units</TableCell>
+                    <TableCell align="right">Strategy</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {logs.map((item, index) => (
+                  {info.Armies.map((item, index) => (
                     <TableRow key={item.id}>
                       <TableCell>{index + 1}</TableCell>
-                      <TableCell align="right">{item.damage}</TableCell>
-                      <TableCell align="right">{item.Attack.name}</TableCell>
-                      <TableCell align="right">{item.Defense.name}</TableCell>
+                      <TableCell align="right">{item.name}</TableCell>
+                      <TableCell align="right">{item.units}</TableCell>
+                      <TableCell align="right">{item.battleUnits}</TableCell>
+                      <TableCell align="right">{strategy[item.strategyID]}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -72,4 +80,4 @@ function ModalCustom({ open, handleClose, logs }) {
   );
 }
 
-export default connect((state) => state)(ModalCustom);
+export default connect((state) => state)(Info);

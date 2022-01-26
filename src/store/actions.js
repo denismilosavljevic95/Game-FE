@@ -128,3 +128,24 @@ export const addArmyFail = (error) => {
     error,
   };
 };
+
+export const battleInfo = (id) => {
+  return {
+    type: actionTypes.BATTLE_INFO,
+    id
+  };
+};
+
+export const battleInfoSuccess = (data) => {
+  return {
+    type: actionTypes.BATTLE_INFO_SUCCESS,
+    data,
+  };
+};
+
+export const battleInfoFail = (error) => {
+  return {
+    type: actionTypes.BATTLE_INFO_FAIL,
+    error,
+  };
+};

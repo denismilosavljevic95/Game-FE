@@ -118,6 +118,27 @@ const reducer = (state = initialState, action) => {
         error: true,
         errorMessage: action.data,
       });
+    case actionTypes.BATTLE_INFO:
+      return Object.assign({}, state, {
+        info: null,
+        isLoading: true,
+        error: false,
+        errorMessage: null,
+      });
+    case actionTypes.BATTLE_INFO_SUCCESS:
+      return Object.assign({}, state, {
+        info: action.data,
+        isLoading: false,
+        error: false,
+        errorMessage: null,
+      });
+    case actionTypes.BATTLE_INFO_FAIL:
+      return Object.assign({}, state, {
+        info: null,
+        isLoading: false,
+        error: true,
+        errorMessage: action.data,
+      });
     default:
       return state;
   }

@@ -8,6 +8,7 @@ import {
   newBattleSaga,
   newAttackSaga,
   addArmySaga,
+  battleInfoSaga
 } from "./battle";
 
 export function* watchBattles() {
@@ -17,4 +18,5 @@ export function* watchBattles() {
   yield takeEvery(actionTypes.NEW_BATTLE, newBattleSaga);
   yield takeEvery(actionTypes.NEW_ATTACK, newAttackSaga);
   yield takeEvery(actionTypes.ADD_ARMY, addArmySaga);
+  yield takeEvery(actionTypes.BATTLE_INFO, battleInfoSaga);
 }

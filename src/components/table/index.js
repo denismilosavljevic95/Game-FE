@@ -26,7 +26,7 @@ export default function SimpleTable({
   handleOpen,
   handleReset,
   handleAttack,
-  handleEdit,
+  handleInfo,
   handleAddArmy,
 }) {
   const classes = useStyles();
@@ -52,6 +52,12 @@ export default function SimpleTable({
                   <TableCell align="right">{statusID[row.statusID]}</TableCell>
                   <TableCell align="right">
                     <Button
+                      aria-label="info"
+                      onClick={() => handleInfo(row.id)}
+                    >
+                      Info
+                    </Button>
+                    <Button
                       aria-label="army"
                       onClick={() => handleAddArmy(row.id)}
                       disabled={row.statusID == 1 ? false : true}
@@ -71,13 +77,6 @@ export default function SimpleTable({
                       disabled={row.statusID == 1 ? true : false}
                     >
                       Log
-                    </Button>
-                    <Button
-                      aria-label="edit"
-                      onClick={() => handleEdit(row.id)}
-                      disabled={row.statusID == 1 ? false : true}
-                    >
-                      Edit
                     </Button>
                     <Button
                       aria-label="reset"
